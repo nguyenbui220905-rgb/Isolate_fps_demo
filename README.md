@@ -319,8 +319,37 @@ Thời gian chạy thực tế phụ thuộc vào môi trường. Không nên k�
 \- Các phép đo hiệu năng mang tính tham khảo và cần được thực hiện trên cùng thiết bị để so sánh công bằng.
 
 
+## 12. Cấu hình môi trường
 
+Dự án hiện tại không yêu cầu file `.env` hoặc `google-services.json`.
 
+- **`.env`:** Không cần vì ứng dụng không sử dụng API bên ngoài, thông tin đăng nhập máy chủ hoặc khóa bí mật.
+- **`google-services.json`:** Không cần vì ứng dụng không tích hợp Firebase.
+- **Dữ liệu kiểm thử:** Được tạo và xử lý cục bộ trong ứng dụng.
+
+Nếu phát triển thêm chức năng sử dụng API hoặc Firebase, cần bổ sung hướng dẫn cấu hình tương ứng.
+
+## 13. Kiểm tra chất lượng mã nguồn
+
+Chạy các lệnh sau tại thư mục gốc dự án:
+
+```bash
+flutter pub get
+flutter analyze
+flutter run -d windows --profile
+```
+
+- `flutter pub get`: cài đặt các dependency.
+- `flutter analyze`: kiểm tra lỗi và cảnh báo mã nguồn.
+- `flutter run -d windows --profile`: chạy ứng dụng ở chế độ Profile để kiểm thử hiệu năng.
+
+Để chạy trên Windows Desktop, cần cài Flutter SDK và Visual Studio với workload **Desktop development with C++**.
+
+## 14. Giới hạn và hướng phát triển
+
+- Dữ liệu JSON hiện được tạo trong bộ nhớ, chưa đọc từ tập tin JSON có sẵn.
+- Các chỉ số FPS và thời gian xử lý phụ thuộc thiết bị, nền tảng và điều kiện chạy.
+- Hướng phát triển: bổ sung chức năng chọn và đọc tập tin JSON lớn hơn 15 MiB, cải thiện xử lý lỗi và thực hiện nhiều lần đo để so sánh kết quả.
 
 
 
